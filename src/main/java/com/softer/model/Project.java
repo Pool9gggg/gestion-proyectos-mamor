@@ -12,23 +12,25 @@ public class Project {
     private ProjectStatus status;
 
     public Project(String code, String name, String clientName, IndustrySector sector, BigDecimal budget, ProjectStatus status) {
-        if (code == null ||code.isBlank()) {
+        if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("El codigo del proyecto es oligatorio");
         }
         this.code = code;
-        if (name == null ||name.isBlank()) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("El nombre del proyecto es oligatorio");
         }
         this.name = name;
         this.clientName = clientName;
         this.sector = sector;
         if (budget.compareTo(BigDecimal.ZERO) <= 0) {
-            throw  new IllegalArgumentException("El presupuesto asignado es un valor no válido");
+            throw new IllegalArgumentException("El presupuesto asignado es un valor no válido");
         }
         this.budget = budget;
-        this.status = status;
+//        if (status == null ) {
+//            status = ProjectStatus.PROPOSED;
+//        }
+        this.status = (status == null) ? ProjectStatus.PROPOSED : status;
     }
-
     public String getCode() {
         return code;
     }
@@ -36,11 +38,9 @@ public class Project {
     public String getName() {
         return name;
     }
-
     public String getClientName() {
         return clientName;
     }
-
     public IndustrySector getSector() {
         return sector;
     }
