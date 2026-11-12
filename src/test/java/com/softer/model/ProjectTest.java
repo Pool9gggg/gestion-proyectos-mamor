@@ -1,14 +1,17 @@
 package com.softer.model;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProjectTest {
 
     @Test
+    @Order(1)
+    @DisplayName("Debe crear un proyecto cuando todos los datos sean validos")
     void shouldCreateProjectWithValidData() {
         Project project = new Project(
                 "PRJ-001",
@@ -28,6 +31,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(2)
     void shouldRejectProjectWithoutCode() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -45,6 +49,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(3)
     void shouldRejectProjectWithBlankCode() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -61,6 +66,7 @@ public class ProjectTest {
     }
 
     @Test
+    @Order(4)
     void shouldRejectProjectWithoutName() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
@@ -74,6 +80,7 @@ public class ProjectTest {
         });
     }
     @Test
+    @Order(5)
     void shouldRejectProjectWithBlankName() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Project(
