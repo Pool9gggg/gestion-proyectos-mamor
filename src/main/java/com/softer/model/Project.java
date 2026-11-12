@@ -15,8 +15,10 @@ public class Project {
         if (code == null ||code.isBlank()) {
             throw new IllegalArgumentException("El codigo del proyecto es oligatorio");
         }
-
         this.code = code;
+        if (name == null ||name.isBlank()) {
+            throw new IllegalArgumentException("El nombre del proyecto es oligatorio");
+        }
         this.name = name;
         this.clientName = clientName;
         this.sector = sector;
